@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
-import HealthCheckService from '../../../services/HealthCheckService';
+import HealthCheckService from '@modules/common/services/HealthCheckService';
 
 export default class HealthCheckController {
   public async index(request: Request, response: Response): Promise<Response> {
-    const healthCheck = new HealthCheckService();
+    const healthCheck = container.resolve(HealthCheckService);
 
     const result = await healthCheck.execute();
 
