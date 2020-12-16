@@ -3,7 +3,7 @@ import { container } from 'tsyringe';
 
 import HealthCheckService from '@modules/common/services/HealthCheckService';
 
-export default class HealthCheckController {
+class HealthCheckController {
   public async index(request: Request, response: Response): Promise<Response> {
     const healthCheck = container.resolve(HealthCheckService);
 
@@ -14,3 +14,5 @@ export default class HealthCheckController {
     });
   }
 }
+
+export default HealthCheckController;
