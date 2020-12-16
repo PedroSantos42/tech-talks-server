@@ -1,14 +1,11 @@
 import ICreateSectionDTO from '@modules/sections/dtos/ICreateSectionDTO';
-import {
-  ISection,
-  ISectionJS,
-} from '@modules/sections/infra/mongoose/schemas/Section';
+import { ISectionJS } from '@modules/sections/infra/mongoose/schemas/Section';
 import ISectionsRepository from '../ISectionsRepository';
 
 class FakeSectionsRepository implements ISectionsRepository {
   constructor(private database: ISectionJS[] = []) {}
 
-  public async create(sectionData: ICreateSectionDTO): Promise<ISection> {
+  public async create(sectionData: ICreateSectionDTO): Promise<ISectionJS> {
     const { name } = sectionData;
 
     const section = {
@@ -18,7 +15,7 @@ class FakeSectionsRepository implements ISectionsRepository {
 
     this.database.push(section);
 
-    return section as ISection;
+    return section as ISectionJS;
   }
 }
 

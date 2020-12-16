@@ -1,6 +1,6 @@
 import ICreateSectionDTO from '../dtos/ICreateSectionDTO';
-import { ISection } from '../infra/mongoose/schemas/Section';
+import { ISectionJS } from '../infra/mongoose/schemas/Section';
 
 export default interface ISectionsRepository {
-  create(sectionData: ICreateSectionDTO): Promise<ISection>;
+  create(sectionData: ICreateSectionDTO): Promise<ISectionJS>;
 }

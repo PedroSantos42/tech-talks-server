@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import ISectionsRepository from '@modules/sections/repositories/ISectionsRepository';
-import { ISection } from '@modules/sections/infra/mongoose/schemas/Section';
+import { ISectionJS } from '@modules/sections/infra/mongoose/schemas/Section';
 
 interface IRequest {
   name: string;
@@ -14,7 +14,7 @@ class CreateSectionService {
     private sectionsRepository: ISectionsRepository,
   ) {}
 
-  public async execute({ name }: IRequest): Promise<ISection> {
+  public async execute({ name }: IRequest): Promise<ISectionJS> {
     const result = await this.sectionsRepository.create({
       name,
     });

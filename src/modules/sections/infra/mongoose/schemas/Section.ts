@@ -5,8 +5,7 @@ export interface ISectionJS {
   name: string;
 }
 
-export interface ISection extends Document {
-  _id: string;
+export interface ISectionDocument extends Document {
   name: string;
 }
 
@@ -21,4 +20,4 @@ const SectionSchema: Schema = new Schema(
   { timestamps: true },
 );
 
-export default mongoose.model<ISection>('Section', SectionSchema);
+export default mongoose.model<ISectionDocument>('Section', SectionSchema);
