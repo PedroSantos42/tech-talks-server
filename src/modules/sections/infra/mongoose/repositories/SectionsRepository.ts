@@ -12,8 +12,8 @@ class SectionRepository implements ISectionsRepository {
     this.odmRepository = Section;
   }
 
-  public async create(section: ICreateSectionDTO): Promise<ISection> {
-    const { name } = section;
+  public async create(sectionData: ICreateSectionDTO): Promise<ISection> {
+    const { name } = sectionData;
 
     const result = await this.odmRepository.create({
       name,

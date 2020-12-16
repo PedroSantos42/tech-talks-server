@@ -1,7 +1,12 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
+export interface ISectionJS {
+  _id?: string;
+  name: string;
+}
+
 export interface ISection extends Document {
-  id: string;
+  _id: string;
   name: string;
 }
 
