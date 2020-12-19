@@ -1,7 +1,7 @@
 import FakeHealthProvider from '@shared/container/providers/HealthProvider/fakes/FakeHealthProvider';
 import HealthCheckService from '@modules/common/services/HealthCheckService';
 
-describe('SendHealthStatus', () => {
+describe('HealthStatus', () => {
   it('should return server uptime in milliseconds', async () => {
     const fakeHealthProvider = new FakeHealthProvider();
 

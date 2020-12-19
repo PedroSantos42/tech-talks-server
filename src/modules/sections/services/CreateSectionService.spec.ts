@@ -3,7 +3,7 @@ import FakeSectionsRepository from '../repositories/fakes/FakeSectionsRepository
 
 import CreateSectionService from './CreateSectionService';
 
-describe('SendHealthStatus', () => {
+describe('Sections', () => {
   it('should be able to create a new section', async () => {
     const section: ISectionJS = {
       name: 'Cloud Computing',
@@ -19,6 +19,8 @@ describe('SendHealthStatus', () => {
       expect.objectContaining({
         _id: expect.any(String),
         name: expect.stringContaining(section.name),
+        createdAt: expect.any(Date),
+        updatedAt: expect.any(Date),
       }),
     );
 

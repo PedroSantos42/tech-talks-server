@@ -8,9 +8,11 @@ class FakeSectionsRepository implements ISectionsRepository {
   public async create(sectionData: ICreateSectionDTO): Promise<ISectionJS> {
     const { name } = sectionData;
 
-    const section = {
+    const section: ISectionJS = {
       _id: Math.random().toString(36).substring(2, 7),
       name,
+      createdAt: new Date(),
+      updatedAt: new Date(),
     };
 
     this.database.push(section);
