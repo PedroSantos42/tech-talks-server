@@ -1,4 +1,6 @@
 import 'reflect-metadata';
+import 'dotenv/config';
+
 import mongo from '@shared/infra/repositories/mongo';
 
 import express from 'express';

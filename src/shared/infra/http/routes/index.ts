@@ -1,4 +1,5 @@
 import { Router } from 'express';
+
 import commonRouter from '@modules/common/infra/http/routes/common.routes';
 import sectionsRouter from '@modules/sections/infra/http/routes/sections.routes';
 import postsRouter from '@modules/posts/infra/http/routes/posts.routes';

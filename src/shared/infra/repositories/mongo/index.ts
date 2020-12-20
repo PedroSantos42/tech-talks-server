@@ -1,9 +1,9 @@
-import Mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
-let database: Mongoose.Connection;
+let database: mongoose.Connection;
 
-const user = 'admin';
-const password = 'techtalks123';
+const user = process.env.MONGO_INITDB_ROOT_USERNAME;
+const password = process.env.MONGO_INITDB_ROOT_PASSWORD;
 
 class MongoDB {
   public openConnection = (): void => {
@@ -13,27 +13,27 @@ class MongoDB {
       return;
     }
 
-    Mongoose.connect(uri, {
+    mongoose.connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
 
-    database = Mongoose.connection;
+    database = mongoose.connection;
 
     database.once('open', async () => {
       console.log('Connected to MongoDB!');
     });
 
-    database.on('error', () => {
-      console.log('Error connecting to database...');
+    database.on('error', err => {
+      console.log('Error when connecting to the database: ', err);
       throw new Error();
     });
   };
 
   public closeConnection = (): void => {
     if (database) {
-      Mongoose.disconnect();
+      mongoose.disconnect();
     }
   };
 }
