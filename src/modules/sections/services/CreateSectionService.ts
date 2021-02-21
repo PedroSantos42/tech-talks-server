@@ -15,11 +15,17 @@ class CreateSectionService {
   ) {}
 
   public async execute({ name }: IRequest): Promise<ISectionJS> {
-    const result = await this.sectionsRepository.create({
+    const section = await this.sectionsRepository.findByName(name);
+
+    if (section) {
+      return section;
+    }
+
+    const createdSection = await this.sectionsRepository.create({
       name,
     });
 
-    return result;
+    return createdSection;
   }
 }
 

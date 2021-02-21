@@ -12,14 +12,24 @@ class SectionRepository implements ISectionsRepository {
     this.odmRepository = Section;
   }
 
-  public async create(sectionData: ICreateSectionDTO): Promise<ISectionJS> {
-    const { name } = sectionData;
-
+  public async create({ name }: ICreateSectionDTO): Promise<ISectionJS> {
     const result = await this.odmRepository.create({
       name,
     });
 
     return result as ISectionJS;
+  }
+
+  public async findOne(sectionName: string): Promise<ISectionJS | undefined> {
+    const section = await this.odmRepository.findOne({
+      name: sectionName,
+    });
+
+    if (!section) {
+      return undefined;
+    }
+
+    return section as ISectionJS;
   }
 }
 

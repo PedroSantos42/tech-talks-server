@@ -12,9 +12,13 @@ class PostRepository implements IPostsRepository {
     this.odmRepository = Post;
   }
 
-  public async create(postData: ICreatePostDTO): Promise<IPostJS> {
-    const { name, content, covers, publishedAt, tags } = postData;
-
+  public async create({
+    name,
+    content,
+    covers,
+    publishedAt,
+    tags,
+  }: ICreatePostDTO): Promise<IPostJS> {
     const result = await this.odmRepository.create({
       name,
       content,
